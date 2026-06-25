@@ -7,8 +7,8 @@ const { db } = require("../firebase");
 // Student registration (requires admin approval)
 router.post("/register", async (req, res) => {
   try {
-    const { name, email, password, roomNumber, hostelBlock } = req.body;
-    if (!name || !email || !password || !roomNumber)
+    const { name, email, password } = req.body;
+    if (!name || !email || !password)
       return res.status(400).json({ error: "All fields required" });
 
     const existing = await db.collection("users").where("email", "==", email).get();
@@ -20,10 +20,8 @@ router.post("/register", async (req, res) => {
       name,
       email,
       password: hashed,
-      roomNumber,
-      hostelBlock: hostelBlock || "",
       role: "student",
-      approved: false, // admin must approve
+      approved: false,
       createdAt: new Date().toISOString(),
     });
 

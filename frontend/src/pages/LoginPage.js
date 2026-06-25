@@ -8,7 +8,7 @@ export default function LoginPage() {
   const navigate = useNavigate();
   const [tab, setTab] = useState("login"); // login | register | admin
   const [loading, setLoading] = useState(false);
-  const [form, setForm] = useState({ name: "", email: "", password: "", roomNumber: "", hostelBlock: "" });
+  const [form, setForm] = useState({ name: "", email: "", password: "" });
 
   const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
 
@@ -102,14 +102,6 @@ export default function LoginPage() {
             <div className="form-group">
               <label className="form-label">College email</label>
               <input className="form-input" type="email" placeholder="you@college.edu.in" value={form.email} onChange={set("email")} required />
-            </div>
-            <div className="form-group">
-              <label className="form-label">Room number</label>
-              <input className="form-input" placeholder="e.g. 204" value={form.roomNumber} onChange={set("roomNumber")} required />
-            </div>
-            <div className="form-group">
-              <label className="form-label">Hostel block (optional)</label>
-              <input className="form-input" placeholder="e.g. Block A" value={form.hostelBlock} onChange={set("hostelBlock")} />
             </div>
             <div className="form-group">
               <label className="form-label">Password</label>
